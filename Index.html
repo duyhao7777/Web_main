@@ -31,13 +31,14 @@
 
       /* Login Page Styles */
       .login-page {
-        padding: 40px 30px;
-        text-align: center;
-        min-height: 100vh;
         display: flex;
         flex-direction: column;
+        align-items: center; /* căn giữa ngang */
         justify-content: center;
+        min-height: 100vh;
         background: #fff5e6;
+        padding: 40px 30px;
+        text-align: center;
       }
 
       .logo {
@@ -337,10 +338,11 @@
         width: 100%;
         max-width: 400px;
         background: white;
-        display: flex;
+        display: none;
         justify-content: space-evenly;
         padding: 10px 0;
         box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
       }
 
       .nav-item {
@@ -370,8 +372,9 @@
       .menu-page {
         display: none;
         background: #f9f2ea;
-        height: 100vh;
+        height: calc(100vh - 60px); /* Sửa lại, trừ chiều cao bottom-nav */
         flex-direction: column;
+        overflow: auto;
       }
 
       .menu-header {
@@ -509,7 +512,7 @@
       .chat-page {
         display: none;
         background: #f9f2ea;
-        height: 100vh;
+        height: calc(100vh - 60px);
         flex-direction: column;
       }
 
@@ -703,7 +706,7 @@
         <img
           src="img/icon/logo.png"
           alt="Kokoria Logo"
-          style="width: 300px; height: 300px; margin-bottom: 0px"
+          style="width: 250px; height: 250px; margin-bottom: 0px"
         />
 
         <div class="login-form">
@@ -823,8 +826,10 @@
         </div>
 
         <button class="back-btn" onclick="goToLogin()">Back to Login</button>
+      </div>
 
-        <div class="bottom-nav">
+      <!-- Bottom Navigation -->
+      <div class="bottom-nav" id = "bottomNav">
           <a href="#" class="nav-item">
             <img
               src="img/icon/home.png"
@@ -854,7 +859,6 @@
             <span>Chat</span>
           </a>
         </div>
-      </div>
 
       <!-- Chat Page -->
       <div class="chat-page" id="chatPage">
@@ -897,13 +901,15 @@
               </div>
             </div>
           </div>
+
+          <!-- Chat Input -->
+          <div class="chat-input">
+            <input type="text" id="userInput" placeholder="Send a message..." />
+            <button onclick="handleUserInput()">➤</button>
+          </div>
         </div>
 
-        <!-- Chat Input -->
-        <div class="chat-input">
-          <input type="text" id="userInput" placeholder="Send a message..." />
-          <button onclick="handleUserInput()">➤</button>
-        </div>
+        
 
         
           </section>
@@ -1074,7 +1080,6 @@
                 </div>
               </div>
             </div>
-    
         </div>
         </div>
 
@@ -1093,6 +1098,7 @@
         document.getElementById("homePage").style.display = "block";
         document.getElementById("chatPage").style.display = "none";
         document.getElementById("menuPage").style.display = "none";
+        document.getElementById("bottomNav").style.display = "flex";
       }
 
       function gotoMenu() {
@@ -1100,6 +1106,7 @@
         document.getElementById("loginPage").style.display = "none";
         document.getElementById("chatPage").style.display = "none";
         document.getElementById("menuPage").style.display = "block";
+        document.getElementById("bottomNav").style.display = "flex";
       }
 
       function goToHome2() {
@@ -1107,6 +1114,7 @@
         document.getElementById("homePage").style.display = "block";
         document.getElementById("chatPage").style.display = "none";
         document.getElementById("menuPage").style.display = "none";
+        document.getElementById("bottomNav").style.display = "flex";
       }
 
       function goToLogin() {
@@ -1115,6 +1123,7 @@
         document.getElementById("chatPage").style.display = "none";
         document.getElementById("phoneInput").value = "";
         document.getElementById("menuPage").style.display = "none";
+        document.getElementById("bottomNav").style.display = "none";
       }
 
       function goToChat() {
@@ -1122,6 +1131,7 @@
         document.getElementById("loginPage").style.display = "none";
         document.getElementById("chatPage").style.display = "flex";
         document.getElementById("menuPage").style.display = "none";
+        document.getElementById("bottomNav").style.display = "flex";
       }
 
       // Chat Functions
