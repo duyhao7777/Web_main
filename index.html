@@ -589,7 +589,7 @@
 
       .bubble {
         background: white;
-        padding: 12px 14px;
+        padding: 8px 14px;
         border-radius: 18px;
         max-width: 75%;
         font-size: 0.95rem;
@@ -619,8 +619,9 @@
       }
 
       .options button {
-        padding: 10px;
+        padding: 8px;
         font-size: 1rem;
+        font-weight: bold;
         border: 1px solid #ccc;
         background: white;
         border-radius: 6px;
@@ -699,45 +700,62 @@
       }
 
       .reservation-page {
-  background: #fff5e6;
-  min-height: 100vh;
-  padding-bottom: 80px;
-}
+        background: #fff5e6;
+        min-height: 100vh;
+        padding-bottom: 80px;
+      }
 
-.reservation-form input,
-.reservation-form textarea {
-  width: 100%;
-  padding: 12px;
-  margin-top: 6px;
-  margin-bottom: 15px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 1rem;
-  background: white;
-}
+      .reservation-form input,
+      .reservation-form textarea {
+        width: 100%;
+        padding: 12px;
+        margin-top: 6px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 1rem;
+        background: white;
+      }
 
-.reservation-form label {
-  font-weight: bold;
-  font-size: 0.9rem;
-  color: #333;
-}
+      .reservation-form label {
+        font-weight: bold;
+        font-size: 0.9rem;
+        color: #333;
+      }
 
-.submit-btn {
-  background: #ff6b35;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  margin: 20px;
-  font-size: 1rem;
-  width: 40%;
-}
+      .submit-btn {
+        background: #ff6b35;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin: 20px;
+        font-size: 1rem;
+        width: 40%;
+      }
 
+      .submit-btn:hover {
+        background: #e55a2b;
+      }
 
-.submit-btn:hover {
-  background: #e55a2b;
-}
+      .chat-link {
+        color: #ff0000;
+        font-weight: bold;
+        cursor: pointer;
+        text-decoration: underline;
+      }
+      .chat-choice-btn {
+        color: #222;
+        font-weight: bold;
+        background: none;
+        border: none;
+        padding: 10px 30px;
+        font-size: 1rem;
+        width: 100%;
+        cursor: pointer;
+        text-decoration: none;
+      }
     </style>
   </head>
   <body>
@@ -923,10 +941,10 @@
                 👋 Hi there! How can I help you?
                 <div class="options">
                   <button onclick="sendOption('Restaurant Menu')">
-                    📋 Restaurant Menu
+                    🍽 Restaurant Menu
                   </button>
                   <button onclick="sendOption('Table Reservation')">
-                    🔒 Table Reservation
+                    🛎 Table Reservation
                   </button>
                   <button onclick="sendOption('Time & Location')">
                     📍 Time & Location
@@ -1260,7 +1278,7 @@
         chatBody.scrollTop = chatBody.scrollHeight;
       }
 
-      function appendMessageWithButton(text, buttonText, buttonAction) {
+      function appendMessageWithLink(text, linkAction) {
         const chatBody = document.getElementById("chatBody");
         const msg = document.createElement("div");
         msg.className = "bot-msg";
@@ -1274,14 +1292,16 @@
         bubble.className = "bubble";
         bubble.innerHTML = text;
 
-        const button = document.createElement("button");
-        button.className = "chat-action-btn";
-        button.innerText = buttonText;
-        button.onclick = function () {
-          eval(buttonAction);
-        };
+        const links = bubble.querySelectorAll('.chat-link');
+        links.forEach(function(link) {
+          // Nếu đã có onclick trong HTML thì không cần gán lại
+          if (!link.onclick && linkAction) {
+            link.onclick = function () {
+              eval(linkAction);
+            };
+          }
+        });
 
-        bubble.appendChild(button);
         msg.appendChild(bubble);
         chatBody.appendChild(msg);
 
@@ -1289,41 +1309,41 @@
       }
 
       let waitingfeedback = false;
+
       function sendOption(option) {
         appendMessage(option, "user");
 
         if (option === "Restaurant Menu") {
-          appendMessageWithButton(
-            "To see Restaurant Menu:",
-            "View Menu",
+          appendMessageWithLink(
+            'To see Restaurant Menu, click <span class="chat-link">Here</span>',
             "gotoMenu()"
           );
         } else if (option === "Table Reservation") {
-          appendMessageWithButton(
-            "To make a Table Reservation:",
-            "Book Table",
+          appendMessageWithLink(
+            'To make a Table Reservation, click <span class="chat-link">Here</span>',
             "goToReservation()"
           );
         } else if (option === "Time & Location") {
-          appendMessage("Please choose: Time or Location");
-          setTimeout(() => {
-            appendMessage(
-              "🕒 Kokoria is open everyday from 10:30 AM to 9:30 PM.\n🙌 Hope to see you soon!"
-            );
-            appendMessage(
-              "📍 You can find us at these locations:\n🏡 207/33 3/2 Street, District 10 \n🏡 573/2 Su Van Hanh, District 10 \n🏡 106 Le Van Duyet, Binh Thanh District"
-            );
-          }, 500);
+          appendMessageWithLink(
+            `<div style="display:flex;flex-direction:column;align-items:center;">
+              <button class="chat-choice-btn" style="background:none;border:none;padding:10px 30px;font-weight:bold;font-size:1rem;width:100%;" onclick="showTime()">Time</button>
+              <hr style="width:80%;margin:0;">
+              <button class="chat-choice-btn" style="background:none;border:none;padding:10px 30px;font-weight:bold;font-size:1rem;width:100%;" onclick="showLocation()">Location</button>
+            </div>`,
+            ""
+          );          
         } else if (option === "Contact Channel") {
-          appendMessage(
-            "To get in touch with us, please: Message us on social media:\nFanpage on Facebook: Kokoria\nInstagram: kokoria.sg\nGive us a call: You can also call us directly at +84 567 890."
+          appendMessageWithLink(
+            'To see Contact Channel, click <span class="chat-link">Here</span>',
+            "goToHome2()"
           );
         } else if (option === "Feedbacks") {
           appendMessage("💬💓 Your opinion matters! Just type it in the text box below and hit send");
           waitingfeedback = true;
         } else if (option === "Payment") {
-          appendMessage(
-            "We accept cash, credit cards, and e-wallets like Momo, ZaloPay."
+          appendMessageWithLink(
+            'To see Payment methods, click <span class="chat-link">Here</span>',
+            "goToHome2()"
           );
         } else {
           appendMessage("This feature is under development.");
@@ -1359,7 +1379,19 @@
         input.value = "";
       }
       
-      
+      function showTime() {
+        appendMessageWithLink(
+          "🕒 Kokoria is open everyday from 10:30 AM to 9:30 PM.<br>🙌 Hope to see you soon!",
+          ""
+        );
+      }
+
+      function showLocation() {
+        appendMessageWithLink(
+          "📍 You can find us at these locations:<br>🏡 207/33 3/2 Street, District 10<br>🏡 573/2 Su Van Hanh, District 10<br>🏡 106 Le Van Duyet, Binh Thanh District",
+          ""
+        );
+      }
       // Add enter key support for phone input
       document
         .getElementById("phoneInput")
