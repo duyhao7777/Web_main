@@ -697,6 +697,45 @@
         cursor: pointer;
         padding: 5px;
       }
+
+      .reservation-page {
+  background: #fff5e6;
+  min-height: 100vh;
+  padding-bottom: 80px;
+}
+
+.reservation-form input,
+.reservation-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: white;
+}
+
+.reservation-form label {
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.submit-btn {
+  padding: 10px 20px;
+  background: #ff6b35;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background: #e55a2b;
+}
     </style>
   </head>
   <body>
@@ -771,7 +810,7 @@
 
         <div class="hero-section">
           <h2 class="hero-title">Where Chicken<br />Meets Cheese</h2>
-          <button class="menu-btn">Menu</button>
+          <button class="menu-btn" onclick="gotoMenu()">Menu</button>
           <div class="image-stack">
             <img src="img/menu/img1.png" class="stack-image img1" />
             <img src="img/menu/img2.png" class="stack-image img2" />
@@ -783,45 +822,43 @@
           <h3 class="box-title">Contact Us</h3>
           <div class="contact-info">
             <div class="contact-item">
-              <img
-                src="img/icon/Facebook_Logo_(2019).png.webp"
-                alt="Facebook Icon"
-                style="width: 20px; height: 20px"
-              />
-              <span>Kokoria</span>
+              <a href="https://www.facebook.com/kokoria.sg/?locale=vi_VN" target="_blank" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit;">
+                <img src="img/icon/Facebook_Logo_(2019).png.webp" alt="Facebook Icon" style="width: 20px; height: 20px" />
+                <span>Kokoria</span>
+              </a>
+
+              
             </div>
             <div class="contact-item">
-              <img
-                src="img/icon/Instagram_icon.png.webp"
-                alt="Instagram Icon"
-                style="width: 20px; height: 20px"
-              />
-              <span>kokoria.sg</span>
+              <a href="https://www.instagram.com/kokoria.sg?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit;">
+                <img src="img/icon/Instagram_icon.png.webp" alt="Instagram Icon" style="width: 20px; height: 20px" />
+                <span>kokoria.sg</span>
+              </a>
             </div>
             <div class="contact-item">
               <img
                 src="img/icon/phone-icon-800x800.png"
                 alt="Phone Icon"
-                class="contact-icon"
+                class="contact-icon" 
               />
-              <span>+84 567 890</span>
+              <span>070 879 6719</span>
             </div>
           </div>
-        </div>
+        </div>            
 
         <div class="hours-section">
           <h3 class="box-title">We're Open</h3>
           <div class="hours-item">
             <div class="location-icon">📍</div>
-            <span>100/23 3/2 Street, District 10</span>
+            <span>207/33 3/2 Street, District 10</span>
           </div>
           <div class="hours-item">
             <div class="location-icon">📍</div>
-            <span>6/A/3 Sukhumvit Road, District 10</span>
+            <span>573/2 Su Van Hanh Street, District 10</span>
           </div>
           <div class="hours-item">
             <div class="location-icon">📍</div>
-            <span>108 Le Van Duyet Street, Binh Thanh District</span>
+            <span>106 Le Van Duyet Street, Binh Thanh District</span>
           </div>
         </div>
 
@@ -830,7 +867,7 @@
 
       <!-- Bottom Navigation -->
       <div class="bottom-nav" id = "bottomNav">
-          <a href="#" class="nav-item">
+          <a href="#" class="nav-item" onclick="goToHome2()">
             <img
               src="img/icon/home.png"
               alt="Home Icon"
@@ -846,8 +883,12 @@
             />
             <span>Menu</span>
           </a>
-          <a href="#" class="nav-item">
-            <div class="nav-icon">📞</div>
+          <a href="#" class="nav-item" onclick="goToReservation()">
+            <img
+              src="img/icon/phone-icon-800x800.png"
+              alt="Booking Icon"
+              style="width: 24px; height: 24px"
+            />
             <span>Booking</span>
           </a>
           <a href="#" class="nav-item" onclick="goToChat()">
@@ -908,10 +949,6 @@
             <button onclick="handleUserInput()">➤</button>
           </div>
         </div>
-
-        
-
-        
           </section>
         </div>
 
@@ -1081,6 +1118,58 @@
               </div>
             </div>
         </div>
+
+        <!-- Table reservation-->
+        <div class="reservation-page" id="reservationPage" style="display: none;">
+  <header class="menu-header">
+    <div class="menu-logo">
+      <img src="img/icon/logo.png" alt="Kokoria Logo" />
+    </div>
+    <h1>Reservation</h1>
+    <div class="profile-icon">👤</div>
+  </header>
+
+  <div class="reservation-form" style="padding: 20px;">
+    <h2 style="color: #ff6b35; text-align: center; font-weight: bold;">Table Reservation Form</h2>
+    <p style="text-align: center; font-size: 0.85rem; margin-bottom: 20px;">*Please fill out this form to confirm your reservation.</p>
+
+    <form id="bookingForm">
+      <label>Contact name</label>
+      <input type="text" name="name" required />
+
+      <label>Email address</label>
+      <input type="email" name="email" placeholder="Enter your email address" required />
+
+      <label>Phone number</label>
+      <input type="tel" name="phone" placeholder="Enter your phone number" required />
+
+      <div style="display: flex; gap: 10px;">
+        <div style="flex: 1;">
+          <label>Date of arrival</label>
+          <input type="date" name="date" required />
+        </div>
+        <div style="flex: 1;">
+          <label>Time</label>
+          <input type="time" name="time" required />
+        </div>
+      </div>
+
+      <label>Number of guests</label>
+      <input type="number" name="guests" min="1" required />
+
+      <label>Additional message</label>
+      <textarea name="message" rows="3" placeholder="Enter text"></textarea>
+
+      <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+        <button type="button" class="back-btn" onclick="goToHome2()">Back to Home</button>
+        <button type="submit" class="submit-btn">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  
+</div>
+
         </div>
 
     <script>
@@ -1099,6 +1188,15 @@
         document.getElementById("chatPage").style.display = "none";
         document.getElementById("menuPage").style.display = "none";
         document.getElementById("bottomNav").style.display = "flex";
+        document.getElementById("reservationPage").style.display = "none";
+      }
+
+      function goToReservation() {
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("homePage").style.display = "none";
+        document.getElementById("chatPage").style.display = "none";
+        document.getElementById("menuPage").style.display = "none";
+        document.getElementById("reservationPage").style.display = "block";
       }
 
       function gotoMenu() {
@@ -1107,6 +1205,7 @@
         document.getElementById("chatPage").style.display = "none";
         document.getElementById("menuPage").style.display = "block";
         document.getElementById("bottomNav").style.display = "flex";
+        document.getElementById("reservationPage").style.display = "none";
       }
 
       function goToHome2() {
@@ -1115,6 +1214,7 @@
         document.getElementById("chatPage").style.display = "none";
         document.getElementById("menuPage").style.display = "none";
         document.getElementById("bottomNav").style.display = "flex";
+        document.getElementById("reservationPage").style.display = "none";
       }
 
       function goToLogin() {
@@ -1124,6 +1224,7 @@
         document.getElementById("phoneInput").value = "";
         document.getElementById("menuPage").style.display = "none";
         document.getElementById("bottomNav").style.display = "none";
+        document.getElementById("reservationPage").style.display = "none";
       }
 
       function goToChat() {
@@ -1132,6 +1233,7 @@
         document.getElementById("chatPage").style.display = "flex";
         document.getElementById("menuPage").style.display = "none";
         document.getElementById("bottomNav").style.display = "flex";
+        document.getElementById("reservationPage").style.display = "none";
       }
 
       // Chat Functions
@@ -1279,6 +1381,25 @@
             if (e.key === "Enter") {
               handleUserInput();
             }
+          });
+        }
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("bookingForm");
+
+        if (form) {
+          form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const data = new FormData(form);
+            const reservation = {};
+            data.forEach((value, key) => {
+              reservation[key] = value;
+            });
+
+            console.log("Reservation submitted:", reservation);
+            alert("🎉 Reservation submitted successfully!");
+            goToHome2(); // quay lại trang chủ
           });
         }
       });
