@@ -356,7 +356,7 @@
       }
 
       .back-btn {
-        background: #ff6b35;
+        background: hsl(17, 14%, 58%);
         color: white;
         padding: 10px 20px;
         border: none;
@@ -723,15 +723,17 @@
 }
 
 .submit-btn {
-  padding: 10px 20px;
   background: #ff6b35;
   color: white;
+  padding: 10px 20px;
   border: none;
-  border-radius: 25px;
-  font-weight: bold;
-  font-size: 1rem;
+  border-radius: 8px;
   cursor: pointer;
+  margin: 20px;
+  font-size: 1rem;
+  width: 40%;
 }
+
 
 .submit-btn:hover {
   background: #e55a2b;
@@ -745,7 +747,7 @@
         <img
           src="img/icon/logo.png"
           alt="Kokoria Logo"
-          style="width: 250px; height: 250px; margin-bottom: 0px"
+          style="width: 300px; height: 300px; margin-bottom: 0px"
         />
 
         <div class="login-form">
@@ -885,8 +887,7 @@
           </a>
           <a href="#" class="nav-item" onclick="goToReservation()">
             <img
-              src="img/icon/phone-icon-800x800.png"
-              alt="Booking Icon"
+              src="img/icon/booking.png"
               style="width: 24px; height: 24px"
             />
             <span>Booking</span>
@@ -1121,51 +1122,51 @@
 
         <!-- Table reservation-->
         <div class="reservation-page" id="reservationPage" style="display: none;">
-  <header class="menu-header">
-    <div class="menu-logo">
-      <img src="img/icon/logo.png" alt="Kokoria Logo" />
+          <header class="menu-header">
+            <div class="menu-logo">
+              <img src="img/icon/logo.png" alt="Kokoria Logo" />
+            </div>
+            <h1>Reservation</h1>
+            <div class="profile-icon">👤</div>
+          </header>
+
+          <div class="reservation-form" style="padding: 20px;">
+            <h2 style="color: #ff6b35; text-align: center; font-weight: bold;">Table Reservation Form</h2>
+            <p style="text-align: center; font-size: 0.85rem; margin-bottom: 20px;">*Please fill out this form to confirm your reservation.</p>
+
+            <form id="bookingForm">
+              <label>Contact name</label>
+              <input type="text" name="name" required />
+
+              <label>Email address</label>
+              <input type="email" name="email" placeholder="Enter your email address" required />
+
+              <label>Phone number</label>
+              <input type="tel" name="phone" placeholder="Enter your phone number" required />
+
+              <div style="display: flex; gap: 10px;">
+                <div style="flex: 1;">
+                  <label>Date of arrival</label>
+                  <input type="date" name="date" required />
+                </div>
+                <div style="flex: 1;">
+                  <label>Time</label>
+                  <input type="time" name="time" required />
+                </div>
+              </div>
+
+              <label>Number of guests</label>
+              <input type="number" name="guests" min="1" required />
+
+              <label>Additional message</label>
+              <textarea name="message" rows="3" placeholder="Enter text"></textarea>
+
+              <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+                <button type="button" class="back-btn" onclick="goToHome2()">Back to Home</button>
+                <button type="submit" class="submit-btn" >Submit</button>
+              </div>
+            </form>
     </div>
-    <h1>Reservation</h1>
-    <div class="profile-icon">👤</div>
-  </header>
-
-  <div class="reservation-form" style="padding: 20px;">
-    <h2 style="color: #ff6b35; text-align: center; font-weight: bold;">Table Reservation Form</h2>
-    <p style="text-align: center; font-size: 0.85rem; margin-bottom: 20px;">*Please fill out this form to confirm your reservation.</p>
-
-    <form id="bookingForm">
-      <label>Contact name</label>
-      <input type="text" name="name" required />
-
-      <label>Email address</label>
-      <input type="email" name="email" placeholder="Enter your email address" required />
-
-      <label>Phone number</label>
-      <input type="tel" name="phone" placeholder="Enter your phone number" required />
-
-      <div style="display: flex; gap: 10px;">
-        <div style="flex: 1;">
-          <label>Date of arrival</label>
-          <input type="date" name="date" required />
-        </div>
-        <div style="flex: 1;">
-          <label>Time</label>
-          <input type="time" name="time" required />
-        </div>
-      </div>
-
-      <label>Number of guests</label>
-      <input type="number" name="guests" min="1" required />
-
-      <label>Additional message</label>
-      <textarea name="message" rows="3" placeholder="Enter text"></textarea>
-
-      <div style="display: flex; justify-content: space-between; margin-top: 20px;">
-        <button type="button" class="back-btn" onclick="goToHome2()">Back to Home</button>
-        <button type="submit" class="submit-btn">Submit</button>
-      </div>
-    </form>
-  </div>
 
   
 </div>
@@ -1287,6 +1288,7 @@
         chatBody.scrollTop = chatBody.scrollHeight;
       }
 
+      let waitingfeedback = false;
       function sendOption(option) {
         appendMessage(option, "user");
 
@@ -1300,24 +1302,25 @@
           appendMessageWithButton(
             "To make a Table Reservation:",
             "Book Table",
-            "makeReservation()"
+            "goToReservation()"
           );
         } else if (option === "Time & Location") {
           appendMessage("Please choose: Time or Location");
           setTimeout(() => {
             appendMessage(
-              "🕒 Time\nKokoria is open everyday from 10:30 AM to 9:30 PM"
+              "🕒 Kokoria is open everyday from 10:30 AM to 9:30 PM.\n🙌 Hope to see you soon!"
             );
             appendMessage(
-              "📍 Location\nYou can find us at:\n• 207/33 3/2 Street, District 10\n• 573/2 Su Van Hanh\n• 106 Le Van Duyet, Binh Thanh"
+              "📍 You can find us at these locations:\n🏡 207/33 3/2 Street, District 10 \n🏡 573/2 Su Van Hanh, District 10 \n🏡 106 Le Van Duyet, Binh Thanh District"
             );
           }, 500);
         } else if (option === "Contact Channel") {
           appendMessage(
-            "You can contact us via Facebook, Instagram, or call 1900 1234."
+            "To get in touch with us, please: Message us on social media:\nFanpage on Facebook: Kokoria\nInstagram: kokoria.sg\nGive us a call: You can also call us directly at +84 567 890."
           );
         } else if (option === "Feedbacks") {
-          appendMessage("We love feedback! Let us know what you think.");
+          appendMessage("💬💓 Your opinion matters! Just type it in the text box below and hit send");
+          waitingfeedback = true;
         } else if (option === "Payment") {
           appendMessage(
             "We accept cash, credit cards, and e-wallets like Momo, ZaloPay."
@@ -1327,14 +1330,19 @@
         }
       }
 
-      function handleUserInput() {
+
+
+      function handleUserInput() { 
         const input = document.getElementById("userInput");
         const value = input.value.trim();
         if (!value) return;
 
         appendMessage(value, "user");
-
-        if (value.toLowerCase().includes("menu")) {
+        if (waitingfeedback) {
+          appendMessage("Your feedback is our secret recipe! 🙌🧡");
+          appendMessage("Thank you for sharing. 😊");
+          waitingfeedback = false;
+        } else if (value.toLowerCase().includes("menu")) {
           appendMessage("You can find the Restaurant Menu here.");
         } else if (value.toLowerCase().includes("time")) {
           appendMessage("Kokoria is open everyday from 10:30 AM to 9:30 PM");
@@ -1350,20 +1358,8 @@
 
         input.value = "";
       }
-
-      // Button action functions
-      function showMenu() {
-        appendMessage(
-          "🍽️ Here is our menu:\n\n🔥 Signature Chicken:\n• Korean Fried Chicken - $12\n• Honey Garlic Chicken - $14\n• Spicy Chicken - $13\n\n🧀 Cheese Specials:\n• Cheese Chicken - $15\n• Mozzarella Sticks - $8\n• Cheese Fondue - $10\n\nFor full menu, visit our restaurant!"
-        );
-      }
-
-      function makeReservation() {
-        appendMessage(
-          "📅 Table Reservation:\n\nPlease call us at: +84 567 890\nOr visit us at:\n• 100/23 3/2 Street, District 10\n• 6/A/3 Sukhumvit Road, District 10\n• 108 Le Van Duyet Street, Binh Thanh\n\nWe are open: 10:30 AM - 9:30 PM daily"
-        );
-      }
-
+      
+      
       // Add enter key support for phone input
       document
         .getElementById("phoneInput")
@@ -1384,7 +1380,7 @@
           });
         }
       });
-
+      
       document.addEventListener("DOMContentLoaded", function () {
         const form = document.getElementById("bookingForm");
 
