@@ -179,8 +179,8 @@
       }
 
       .search-bar {
-        padding: 15px 20px;
-        background: white;
+        padding: 1px 1px;
+        background: linear-gradient(135deg, #fff5e6, #ffebdb);
       }
 
       .search-input {
@@ -396,7 +396,7 @@
       }
 
       .menu-logo img {
-        width: 120px;
+        width: 100px;
         height: auto;
       }
 
@@ -423,8 +423,11 @@
         width: 100%;
         display: block;
         height: 120px;
+        width: 90%;
+        margin: 0 auto;
+        border-radius: 12px;
         object-fit: cover;
-        background: linear-gradient(135deg, #ff6b35, #ffd93d);
+        background: linear-gradient(135deg, #ffd93d, #ff6b35);
       }
 
       .section {
@@ -743,7 +746,7 @@
 
       .reservation-form label {
         font-weight: bold;
-        font-size: 0.9rem;
+        font-size: 1rem;
         color: #333;
       }
 
@@ -856,7 +859,7 @@
         <img
           src="img/icon/logo.png"
           alt="Kokoria Logo"
-          style="width: 300px; height: 300px; margin-bottom: 0px"
+          style="width: 250px; height: 250px; margin-bottom: 0px"
         />
 
         <div class="login-form">
@@ -900,7 +903,7 @@
           <img
             src="img/icon/logo.png"
             alt="Kokoria Logo"
-            style="width: 120px; height: 120px; margin-bottom: 0px"
+            style="width: 100px; height: 100px; margin-bottom: 0px"
           />
           <h1
             style="
@@ -915,11 +918,10 @@
           <div class="profile-icon">👤</div>
         </div>
 
-        <div class="search-bar">
-          <input type="text" class="search-input" placeholder="Search..." />
-        </div>
-
         <div class="hero-section">
+          <div class="search-bar">
+            <input type="text" class="search-input" placeholder="Search..." />
+          </div>
           <h2 class="hero-title">Where Chicken<br />Meets Cheese</h2>
           <button class="menu-btn" onclick="gotoMenu()">Menu</button>
           <div class="image-stack">
@@ -1073,6 +1075,7 @@
             <h1>Menu</h1>
             <div class="profile-icon">👤</div>
           </header>
+          <br>
 
           <!-- Banner -->
           <div class="banner">
