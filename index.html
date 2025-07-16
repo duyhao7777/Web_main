@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kokoria - Chicken & Cheese</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Coiny&display=swap" rel="stylesheet">
+
     <style>
       * {
         margin: 0;
@@ -12,7 +16,7 @@
       }
 
       body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 
           sans-serif;
         background-color: #fff5e6;
         color: #333;
@@ -21,7 +25,7 @@
       html {
         height: 100%;
         overflow-y: auto;
-      }
+      } 
       .container {
         max-width: 400px;
         margin: 0 auto;
@@ -484,6 +488,26 @@
         position: relative;
       }
 
+      /* Áp Coiny chỉ cho tên món */
+      .card .info h3 {
+        font-family: 'Coiny', cursive;
+      }
+
+      /* Phần size (M/L, S/M/L, 3 pcs…) giữ font mặc định */
+      .card .info h3 .size-note {
+        font-family: inherit;
+      }
+
+      /* Phần note (dòng mô tả size, flavor…) giữ font mặc định */
+      .card .info .note {
+        font-family: inherit;
+      }
+
+      .card .info h3 .size-note,
+      .card .info .note {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      }
+
       .card .info h3 .size-note {
         position: absolute;
         right: 0;
@@ -491,7 +515,7 @@
         font-size: 0.75rem;
         font-weight: normal;
         color: #666;
-        margin-top: 3px;
+        margin-top: 27px;
       }
 
       .card .info .note {
@@ -756,6 +780,73 @@
         cursor: pointer;
         text-decoration: none;
       }
+
+      /* ===== Homepage ===== */
+      /* Tiêu đề “Home” */
+      #homePage .header h1 {
+        font-family: 'Coiny', cursive;
+      }
+
+      /* Nút “Menu” trên banner */
+      #homePage .menu-btn {
+        font-family: 'Coiny', cursive;
+      }
+
+      /* “Contact Us” và “We’re Open” */
+      #homePage .contact-section .box-title,
+      #homePage .hours-section .box-title {
+        font-family: 'Coiny', cursive;
+      }
+
+      /* ===== Menu Page ===== */
+      /* Tiêu đề “Menu” */
+      #menuPage .menu-header h1 {
+        font-family: 'Coiny', cursive;
+      }
+
+      /* Các mục: Signature, Sauced Chicken, Combo, Side Dishes, Drinks */
+      #menuPage .section h2 {
+        font-family: 'Coiny', cursive;
+      }
+
+      /* Tên tất cả món ăn và nước uống */
+      #menuPage .card .info h3 {
+        font-family: 'Coiny', cursive;
+      }
+
+      /* ===== Booking Page ===== */
+      /* Tiêu đề “Reservation” */
+      #reservationPage header h1 {
+        font-family: 'Coiny', cursive;
+      }
+
+      /* “Table Reservation Form” */
+      #reservationPage .reservation-form h2 {
+        font-family: 'Coiny', cursive;
+      }
+
+      /* Các label trong form */
+      #reservationPage .reservation-form label {
+        font-family: 'Coiny', cursive;
+      }
+
+      /* Nút “Back to Home” và “Submit” */
+      #reservationPage .reservation-form .back-btn,
+      #reservationPage .reservation-form .submit-btn {
+        font-family: 'Coiny', cursive;
+      }
+
+      /* ===== Chat Page ===== */
+      /* Tiêu đề “Message” */
+      #chatPage .chat-header h1 {
+        font-family: 'Coiny', cursive;
+      }
+
+      /* Logo text “Kokoria” trong khung chat */
+      #chatPage .chat-banner-text {
+        font-family: 'Coiny', cursive;
+      }
+
     </style>
   </head>
   <body>
