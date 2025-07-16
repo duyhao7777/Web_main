@@ -382,6 +382,7 @@
       }
 
       .menu-header {
+        position: relative;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -389,14 +390,20 @@
         background: white;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
       }
-
+      
+      .menu-header h1 {
+        position: absolute;
+        left: 55%;
+        transform: translateX(-50%);
+      }
+      
       .menu-logo {
         width: 90px;
         height: auto;
       }
 
       .menu-logo img {
-        width: 100px;
+        width: 90px;
         height: auto;
       }
 
