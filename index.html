@@ -589,7 +589,7 @@
 
       .bubble {
         background: white;
-        padding: 8px 14px;
+        padding: 6px 14px;
         border-radius: 18px;
         max-width: 75%;
         font-size: 0.95rem;
@@ -614,12 +614,12 @@
       .options {
         display: flex;
         flex-direction: column;
-        gap: 6px;
+        gap: 2px;
         margin-top: 10px;
       }
 
       .options button {
-        padding: 8px;
+        padding: 6px;
         font-size: 1rem;
         font-weight: bold;
         border: 1px solid #ccc;
@@ -1326,27 +1326,52 @@
         } else if (option === "Time & Location") {
           appendMessageWithLink(
             `<div style="display:flex;flex-direction:column;align-items:center;">
-              <button class="chat-choice-btn" style="background:none;border:none;padding:10px 30px;font-weight:bold;font-size:1rem;width:100%;" onclick="showTime()">Time</button>
+              <button class="chat-choice-btn" style="background:none;border:none;padding:10px 30px;font-weight:bold;font-size:1rem;width:100%;" onclick="showTime('Time')">Time</button>
               <hr style="width:80%;margin:0;">
-              <button class="chat-choice-btn" style="background:none;border:none;padding:10px 30px;font-weight:bold;font-size:1rem;width:100%;" onclick="showLocation()">Location</button>
+              <button class="chat-choice-btn" style="background:none;border:none;padding:10px 30px;font-weight:bold;font-size:1rem;width:100%;" onclick="showLocation('Location')">Location</button>
             </div>`,
             ""
           );          
         } else if (option === "Contact Channel") {
           appendMessageWithLink(
-            'To see Contact Channel, click <span class="chat-link">Here</span>',
-            "goToHome2()"
+            `<div style="line-height:1.7;">
+              To get in touch with us, please:<br>
+              • Fanpage on Facebook: <span style="color:#ff6b35;font-weight:bold;">Kokoria</span><br>
+              • Instagram: <span style="color:#ff6b35;font-weight:bold;">kokoria.sg</span><br>
+              Give us a call: You can also call us directly at 
+              <a href="tel:+845675890" style="color:#3498db;font-weight:bold;text-decoration:none;">+84 567 890</a>.
+            </div>`
+          );
+          appendMessageWithLink(
+            '<div>Feel free to ‘alo’ or tin-tin us!</div>'
           );
         } else if (option === "Feedbacks") {
           appendMessage("💬💓 Your opinion matters! Just type it in the text box below and hit send");
           waitingfeedback = true;
         } else if (option === "Payment") {
           appendMessageWithLink(
-            'To see Payment methods, click <span class="chat-link">Here</span>',
-            "goToHome2()"
+            `<div style="display:flex;flex-direction:column;align-items:center;">
+              <button class="chat-choice-btn" onclick="showPaymentMethod('Payment Method')">Payment Method</button>
+              <hr style="width:80%;margin:0;">
+              <button class="chat-choice-btn" onclick="showExtraCharges('Extra charges')">Extra charges</button>
+              <hr style="width:80%;margin:0;">
+              <button class="chat-choice-btn" onclick="showTaxes('Taxes')">Taxes</button>
+            </div>`,
+            ""
           );
         } else {
-          appendMessage("This feature is under development.");
+          appendMessageWithLink(
+            `<div style="display:flex;flex-direction:column;align-items:center;">
+              <button class="chat-choice-btn" onclick="showParking('Parking Area')">Parking Area</button>
+              <hr style="width:80%;margin:0;">
+              <button class="chat-choice-btn" onclick="showDelivery('Delivery Options')">Delivery Options</button>
+              <hr style="width:80%;margin:0;">
+              <button class="chat-choice-btn" onclick="showParty('Party Decoration')">Party Decoration</button>
+              <hr style="width:80%;margin:0;">
+              <button class="chat-choice-btn" onclick="showMore('More')">More</button>
+            </div>`,
+            ""
+          );
         }
       }
 
@@ -1379,16 +1404,83 @@
         input.value = "";
       }
       
-      function showTime() {
+      function showTime(optionText) {
+        appendMessage(optionText, "user");
         appendMessageWithLink(
           "🕒 Kokoria is open everyday from 10:30 AM to 9:30 PM.<br>🙌 Hope to see you soon!",
           ""
         );
       }
 
-      function showLocation() {
+      function showLocation(optionText) {
+        appendMessage(optionText, "user");
         appendMessageWithLink(
           "📍 You can find us at these locations:<br>🏡 207/33 3/2 Street, District 10<br>🏡 573/2 Su Van Hanh, District 10<br>🏡 106 Le Van Duyet, Binh Thanh District",
+          ""
+        );
+      }
+
+      function showPaymentMethod(optionText) {
+        appendMessage(optionText, "user");
+        appendMessageWithLink(
+          "We accept <b>cash</b>, <b>e-wallet</b>, and <b>bank transfer 😁</b>",
+          ""
+        );
+      }
+
+      function showExtraCharges(optionText) {
+        appendMessage(optionText, "user");
+        appendMessageWithLink(
+          "There are no extra charges.<br>Nothing surprised, nothing hidden! 😃",
+          ""
+        );
+      }
+
+      function showTaxes(optionText) {
+        appendMessage(optionText, "user");
+        appendMessageWithLink(
+          "Thanks for asking. <b>A 5% VAT</b> will be included in your bill in line with tax policies.",
+          ""
+        );
+      }
+
+      function showParking(optionText) {
+        appendMessage(optionText, "user");
+        appendMessageWithLink(
+          "Yes, we have a motorbike parking area right in front! 😁",
+          ""
+        );
+      }
+
+      function showDelivery(optionText) {
+        appendMessage(optionText, "user");
+        appendMessageWithLink(
+          "You can find us on <b>ShopeeFood</b> or <b>GrabFood</b> for quick delivery."
+        );
+        appendMessageWithLink(
+          "📱 Just one click away!"
+        );
+      }
+
+      function showParty(optionText) {
+        appendMessage(optionText, "user");
+        appendMessageWithLink(
+          "Call us to arrange party decorations through this number <a href='tel:+845675890' style='color:#3498db;font-weight:bold;text-decoration:none;'>+84 567 890</a>.",
+          ""
+        );
+        appendMessageWithLink(
+          "🎉 We'd love to help!"
+        );
+      }
+
+      function showMore(optionText) {
+        appendMessage(optionText, "user");
+        appendMessageWithLink(
+          "For more details, contact us through the number <a href='tel:+845675890' style='color:#3498db;font-weight:bold;text-decoration:none;'>+84 567 890</a>.",
+          ""
+        );
+        appendMessageWithLink(
+          "🧡 We're here for you.",
           ""
         );
       }
