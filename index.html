@@ -149,6 +149,45 @@
         color: #4a90e2;
         text-decoration: none;
       }
+      .success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #c3e6cb;
+        }
+
+        .error-message {
+            display: none;
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #f5c6cb;
+        }
+
+        .loading {
+            display: none;
+            margin: 10px 0;
+        }
+
+        .spinner {
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #667eea;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
 
       /* Home Page Styles */
       .home-page {
@@ -871,7 +910,12 @@
 
         <div class="login-form">
           <h2>Create an account</h2>
-
+          <div class="success-message" id="successMessage"></div>
+          <div class="error-message" id="errorMessage"></div>
+          <div class="loading" id="loading">
+              <div class="spinner"></div>
+              <p>Đang xử lý...</p>
+          </div>
           <div class="input-group">
             <input
               type="tel"
@@ -885,16 +929,24 @@
 
           <div class="divider">or</div>
 
-          <button class="social-btn google-btn" onclick="goToHome2()">
-            <span></span> Continue with Google
+          <button class="social-btn google-btn" onclick="loginWithGoogle()">
+            <span>
+              <img
+                src="img\icon\Google__G__logo.svg.png"
+                alt="Google Icon"
+                style="width: 20px; height: 20px"
+              />
+            </span> Continue with Google
           </button>
 
-          <button class="social-btn apple-btn" onclick="goToHome2()">
-            <span></span> Continue with Apple
-          </button>
-
-          <button class="social-btn facebook-btn" onclick="goToHome2()">
-            <span></span> Continue with Facebook
+          <button class="social-btn facebook-btn" onclick="loginWithFacebook()">
+            <span>
+              <img
+                src="img\icon\Facebook_Logo_(2019).png.webp"
+                alt="Facebook Icon"
+                style="width: 20px; height: 20px"
+              />
+            </span> Continue with Facebook
           </button>
 
           <div class="terms">
@@ -1293,6 +1345,66 @@
         </div>
 
     <script>
+        function showMessage(message, type = 'success') {
+            const successEl = document.getElementById('successMessage');
+            const errorEl = document.getElementById('errorMessage');
+            
+            if (type === 'success') {
+                successEl.textContent = message;
+                successEl.style.display = 'block';
+                errorEl.style.display = 'none';
+            } else {
+                errorEl.textContent = message;
+                errorEl.style.display = 'block';
+                successEl.style.display = 'none';
+            }
+            
+            setTimeout(() => {
+                successEl.style.display = 'none';
+                errorEl.style.display = 'none';
+            }, 5000);
+        }
+
+        function showLoading(show = true) {
+            document.getElementById('loading').style.display = show ? 'block' : 'none';
+        }
+         function goToHome2() {
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("homePage").style.display = "block";
+        document.getElementById("chatPage").style.display = "none";
+        document.getElementById("menuPage").style.display = "none";
+        document.getElementById("bottomNav").style.display = "flex";
+        document.getElementById("reservationPage").style.display = "none";
+      }
+        // Google Sign-In
+        function loginWithGoogle() {
+            showLoading(true);
+            
+            // Simulate Google login process
+            setTimeout(() => {
+                showLoading(false);
+                showMessage('Login successful! Redirecting to Google...');
+                
+                setTimeout(() => {
+                    goToHome2(); // Chuyển hướng đến trang Home
+                }, 1000); // Thay bằng trang tiếp theo của bạn
+            }, 1000);
+        }
+
+        // Facebook Login
+        function loginWithFacebook() {
+            showLoading(true);
+            
+            // Simulate Facebook login process
+            setTimeout(() => {
+                showLoading(false);
+                showMessage('Login successful! Redirecting to Facebook...');
+                
+                setTimeout(() => {
+                    goToHome2(); // Chuyển hướng đến trang Home
+                }, 1000); // Thay bằng trang tiếp theo của bạn
+            }, 1000);
+        }
       // Navigation Functions
       function goToHome() {
         const phoneInput = document.getElementById("phoneInput");
@@ -1328,14 +1440,7 @@
         document.getElementById("reservationPage").style.display = "none";
       }
 
-      function goToHome2() {
-        document.getElementById("loginPage").style.display = "none";
-        document.getElementById("homePage").style.display = "block";
-        document.getElementById("chatPage").style.display = "none";
-        document.getElementById("menuPage").style.display = "none";
-        document.getElementById("bottomNav").style.display = "flex";
-        document.getElementById("reservationPage").style.display = "none";
-      }
+     
 
       function goToLogin() {
         document.getElementById("homePage").style.display = "none";
