@@ -150,44 +150,44 @@
         text-decoration: none;
       }
       .success-message {
-            display: none;
-            background: #d4edda;
-            color: #155724;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #c3e6cb;
-        }
+          display: none;
+          background: #d4edda;
+          color: #155724;
+          padding: 15px;
+          border-radius: 10px;
+          margin-bottom: 20px;
+          border: 1px solid #c3e6cb;
+      }
 
-        .error-message {
-            display: none;
-            background: #f8d7da;
-            color: #721c24;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #f5c6cb;
-        }
+      .error-message {
+          display: none;
+          background: #f8d7da;
+          color: #721c24;
+          padding: 15px;
+          border-radius: 10px;
+          margin-bottom: 20px;
+          border: 1px solid #f5c6cb;
+      }
 
-        .loading {
-            display: none;
-            margin: 10px 0;
-        }
+      .loading {
+          display: none;
+          margin: 10px 0;
+      }
 
-        .spinner {
-            border: 2px solid #f3f3f3;
-            border-top: 2px solid #667eea;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-        }
+      .spinner {
+          border: 2px solid #f3f3f3;
+          border-top: 2px solid #667eea;
+          border-radius: 50%;
+          width: 20px;
+          height: 20px;
+          animation: spin 1s linear infinite;
+          margin: 0 auto;
+      }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+      @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+      }
 
       /* Home Page Styles */
       .home-page {
@@ -544,7 +544,13 @@
 
       /* Phần size (M/L, S/M/L, 3 pcs…) giữ font mặc định */
       .card .info h3 .size-note {
-        font-family: inherit;
+        position: absolute;
+        right: 0;
+        top: 3px;
+        font-size: 0.75rem;
+        font-weight: normal;
+        color: #666;
+        margin-top: 10px;
       }
 
       /* Phần note (dòng mô tả size, flavor…) giữ font mặc định */
@@ -860,7 +866,7 @@
 
       /* Tên tất cả món ăn và nước uống */
       #menuPage .card .info h3 {
-        font-family: 'Coiny', cursive;
+        font-family: 'Poppins', sans-serif;
       }
 
       /* ===== Booking Page ===== */
@@ -870,6 +876,44 @@
       }
 
       /* “Table Reservation Form” */
+      .custom-select-wrapper {
+        position: relative;
+        width: 100%;
+      }
+
+      .custom-select-display {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        cursor: pointer;
+        background-color: white;
+      }
+
+      .custom-select-options {
+        position: absolute;
+        width: 100%;
+        border: 1px solid #ccc;
+        border-top: none;
+        border-radius: 0 0 6px 6px;
+        background-color: white;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: none;
+        z-index: 10;
+        max-height: 140px;
+        overflow-y: auto;
+      }
+
+      .custom-select-options li {
+        padding: 10px;
+        cursor: pointer;
+      }
+
+      .custom-select-options li:hover {
+        background-color: #f1f1f1;
+      }
+
       #reservationPage .reservation-form h2 {
         font-family: 'Coiny', cursive;
       }
@@ -894,6 +938,112 @@
       /* Logo text “Kokoria” trong khung chat */
       #chatPage .chat-banner-text {
         font-family: 'Coiny', cursive;
+      }
+      .status-completed {
+        display: inline-block;
+        background: #d4edda;
+        color: #2e7d32;
+        font-weight: bold;
+        font-size: 0.8rem;
+        padding: 4px 12px;
+        border-radius: 6px;
+      }
+
+      .status-pending {
+        display: inline-block;
+        background: #fff3cd;
+        color: #b7791f;
+        font-weight: bold;
+        font-size: 0.8rem;
+        padding: 4px 12px;
+        border-radius: 6px;
+      }
+
+      /* ===== Activity Page =====*/
+      .activity-title {
+        font-family: 'Coiny', cursive;
+        font-size: 2rem;
+        font-weight: 600;
+        color: #333;
+        margin: 0;
+      }
+
+      .order-detail-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 10px 0 10px;
+        color: #333;
+        font-family: 'Coiny', cursive;
+      }
+      .order-detail-box {
+        background: white;
+        border-radius: 10px;
+        padding: 16px 20px;
+        margin: 20px;
+        font-size: 0.95rem;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .order-items {
+        width: 100%;
+        margin-top: 10px;
+        border-collapse: collapse;
+      }
+
+      .order-items td {
+        padding: 4px 0;
+        font-size: 0.95rem;
+      }
+
+      .order-items td:last-child {
+        text-align: right;
+      }
+
+      .total-highlight {
+        color: #e74c3c;
+        font-weight: bold;
+      }
+      
+      .activity-box {
+        background: white;
+        border-radius: 10px;
+        padding: 16px;
+        margin: 20px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+        font-size: 0.95rem;
+      }
+
+      .activity-box .row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 6px;
+      }
+
+      .activity-box .label {
+        font-weight: bold;
+        color: #333;
+      }
+
+      .activity-box hr {
+        border: none;
+        border-top: 1px solid #ccc;
+        margin: 10px 0;
+      }
+
+      .view-link {
+        color: #3498db;
+        font-weight: bold;
+        font-size: 0.9rem;
+        float: right;
+        cursor: pointer;
+        text-decoration: underline;
+      }
+      
+      .row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 6px;
+        align-items: center;
       }
 
     </style>
@@ -1070,7 +1220,28 @@
             />
             <span>Chat</span>
           </a>
+          <a href="#" class="nav-item" onclick="goToActivity()">
+            <img
+              src="img/icon/Activity.png"
+              alt="Activity Icon"
+              style="width: 24px; height: 24px"
+            />
+            <span>Activity</span>
+          </a>
         </div>
+      
+      <!-- Activity Page -->
+      <div class="activity-page" id="activityPage" style="display: none; background: #fef5e7;">
+        <header class="chat-header">
+          <img src="img/icon/logo.png" alt="Kokoria Logo" class="header-logo" />
+          <h2 class="activity-title">Activity</h2>
+          <div class="profile-icon">👤</div>
+        </header>
+
+        <div id="activityList" style="padding: 20px;"></div>
+
+        <div id="orderDetail" style="padding: 20px; display: none;"></div>
+      </div>
 
       <!-- Chat Page -->
       <div class="chat-page" id="chatPage">
@@ -1329,6 +1500,17 @@
               <label>Number of guests</label>
               <input type="number" name="guests" min="1" required />
 
+              <label for="locationInput">Location</label>
+              <div class="custom-select-wrapper">
+                <div id="locationDisplay" class="custom-select-display">Select a location</div>
+                <ul id="locationOptions" class="custom-select-options">
+                  <li onclick="selectLocation('207/33 3/2 Street, District 10')">207/33 3/2 Street, District 10</li>
+                  <li onclick="selectLocation('573/2 Su Van Hanh Street, District 10')">573/2 Su Van Hanh Street, District 10</li>
+                  <li onclick="selectLocation('106 Le Van Duyet Street, Binh Thanh District')">106 Le Van Duyet Street, Binh Thanh District</li>
+                </ul>
+                <input type="hidden" id="locationInput" name="locationInput" required>
+              </div>
+
               <label>Additional message</label>
               <textarea name="message" rows="3" placeholder="Enter text"></textarea>
 
@@ -1421,6 +1603,7 @@
         document.getElementById("menuPage").style.display = "none";
         document.getElementById("bottomNav").style.display = "flex";
         document.getElementById("reservationPage").style.display = "none";
+        document.getElementById("activityPage").style.display = "none";
       }
 
       function goToReservation() {
@@ -1429,6 +1612,7 @@
         document.getElementById("chatPage").style.display = "none";
         document.getElementById("menuPage").style.display = "none";
         document.getElementById("reservationPage").style.display = "block";
+        document.getElementById("activityPage").style.display = "none";
       }
 
       function gotoMenu() {
@@ -1438,6 +1622,7 @@
         document.getElementById("menuPage").style.display = "block";
         document.getElementById("bottomNav").style.display = "flex";
         document.getElementById("reservationPage").style.display = "none";
+        document.getElementById("activityPage").style.display = "none";
       }
 
      
@@ -1450,6 +1635,7 @@
         document.getElementById("menuPage").style.display = "none";
         document.getElementById("bottomNav").style.display = "none";
         document.getElementById("reservationPage").style.display = "none";
+        document.getElementById("activityPage").style.display = "none";
       }
 
       function goToChat() {
@@ -1459,8 +1645,18 @@
         document.getElementById("menuPage").style.display = "none";
         document.getElementById("bottomNav").style.display = "flex";
         document.getElementById("reservationPage").style.display = "none";
+        document.getElementById("activityPage").style.display = "none";
       }
-
+      
+      function goToActivity() {
+        document.getElementById("homePage").style.display = "none";
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("chatPage").style.display = "none";
+        document.getElementById("menuPage").style.display = "none";
+        document.getElementById("activityPage").style.display = "block";
+        document.getElementById("bottomNav").style.display = "flex";
+        renderActivityList();
+      }
       // Chat Functions
       function appendMessage(text, sender = "bot") {
         const chatBody = document.getElementById("chatBody");
@@ -1690,6 +1886,158 @@
           ""
         );
       }
+
+      let activities = [
+        {
+          id: "67854321",
+          type: "completed",
+          date: "11:28 21/06/2025",
+          total: 22.49,
+          items: 4,
+          detail: {
+            table: 8,
+            location: "106 Le Van Duyet, Binh Thanh District",
+            list: [
+              { name: "Melted Cheese Chicken (M)", price: 9.99 },
+              { name: "Stir-Fried Vermicelli", price: 7.00 },
+              { name: "Mandu", price: 5.50 }
+            ]
+          }
+        },
+        {
+          id: "67854550",
+          type: "completed",
+          date: "19:42 09/06/2025",
+          total: 36.19,
+          items: 6,
+          detail: {
+            table: 2,
+            location: "573/2 Su Van Hanh, District 10",
+            list: [
+              { name: "Melted Cheese Chicken (S)", price: 9.50 },
+              { name: "Combo A", price: 12.99 },
+              { name: "Salad (chicken)", price: 5.00 },
+              { name: "Kimchi Soup", price: 6.20 },
+              { name: "7Up", price: 1.00 },
+              { name: "Soda (Mango)", price: 1.50 }
+            ]
+          }
+        }
+      ];
+
+      function renderActivityList() {
+        const container = document.getElementById("activityList");
+        container.innerHTML = "";
+        activities.forEach((act, index) => {
+          const statusClass = act.type === "completed" ? "status-completed" : "status-pending";
+          const totalText = act.type === "completed" ? `$${act.total}` : "";
+          const middleText = act.type === "completed" ? `Items: ${act.items}` : `Guests: ${act.guests}`;
+
+          const html = `
+            <div class="activity-box">
+              <div class="${statusClass}">${act.type.charAt(0).toUpperCase() + act.type.slice(1)}</div>
+              <hr />
+
+              <div class="row"><span class="label">Date:</span> <span>${act.date}</span></div>
+              <div class="row"><span class="label">ID:</span> <span>#${act.id}</span></div>
+              <div class="row"><span class="label">${act.type === "completed" ? "Items" : "Guests"}:</span> <span>${act.type === "completed" ? act.items : act.guests}</span></div>
+
+              <hr />
+
+              <div class="row" style="align-items: center;">
+                <div>
+                  <span class="label">Total:</span> 
+                  <span class="total-highlight">${totalText}</span>
+                </div>
+                <div>
+                  <span class="view-link" onclick="showOrderDetail(${index})">View details</span>
+                </div>
+              </div>
+          `;
+          container.innerHTML += html;
+        });
+      }
+
+
+      function showOrderDetail(index) {
+        const order = activities[index];
+        document.getElementById("activityList").style.display = "none";
+        const detailEl = document.getElementById("orderDetail");
+
+        const statusClass = order.type === "completed" ? "status-completed" : "status-pending";
+
+        let html = `
+          <div class="order-detail-wrapper">
+            <h2 class="order-detail-title">Order Details</h2>
+          </div>
+
+          <div class="order-detail-box">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span class="${statusClass}">${order.type.charAt(0).toUpperCase() + order.type.slice(1)}</span>
+            <span style="color: #ff6b35; font-weight: bold;">#${order.id}</span>
+          </div>
+
+          <hr style="margin:12px 0; border: none; border-top: 1px solid #ccc;" />
+
+          <div><strong>Date:</strong> ${order.date}</div>`;
+
+        if (order.type === "completed") {
+          html += `
+            <div><strong>Table:</strong> ${order.detail.table}</div>
+            <div><strong>Location:</strong> ${order.detail.location}</div>
+
+            <hr style="margin:12px 0; border: none; border-top: 1px solid #ccc;" />
+
+            <table class="order-items">`;
+          order.detail.list.forEach(item => {
+            html += `<tr><td>${item.name}</td><td>$${item.price.toFixed(2)}</td></tr>`;
+          });
+
+          const total = order.detail.list.reduce((sum, i) => sum + i.price, 0);
+          html += `</table>
+
+            <hr style="margin:12px 0; border: none; border-top: 1px solid #ccc;" />
+
+            <strong>Total: <span class="total-highlight">$${total.toFixed(2)}</span></strong>
+          `;
+        } else {
+          html += `
+            <div><strong>Contact number:</strong> ${order.contact}</div>
+            <div><strong>Number of guests:</strong> ${order.guests}</div>
+            <div><strong>Location:</strong> ${order.location}</div>
+            <div><strong>Additional message:</strong> ${order.message}</div>
+          `;
+        }
+
+        html += `
+          <br/><br/>
+          <button onclick="renderActivityList();document.getElementById('orderDetail').style.display='none';document.getElementById('activityList').style.display='block';"
+            style="background:#ff6b35;color:white;padding:8px 16px;border:none;border-radius:8px;">
+            Back
+          </button>
+        </div>`;
+
+        detailEl.innerHTML = html;
+        detailEl.style.display = "block";
+      }
+      
+      const displayBox = document.getElementById("locationDisplay");
+      const optionsBox = document.getElementById("locationOptions");
+      const hiddenInput = document.getElementById("locationInput");
+
+      // Toggle show/hide when click
+      displayBox.addEventListener("click", () => {
+        optionsBox.style.display = optionsBox.style.display === "block" ? "none" : "block";
+      });
+
+      // Set selection
+      function selectLocation(value) {
+        displayBox.textContent = value;
+        hiddenInput.value = value;
+        optionsBox.style.display = "none";
+      }
+
+
       // Add enter key support for phone input
       document
         .getElementById("phoneInput")
@@ -1725,6 +2073,16 @@
 
             console.log("Reservation submitted:", reservation);
             alert("🎉 Reservation submitted successfully!");
+            activities.unshift({
+              id: "678556" + Math.floor(Math.random() * 1000),
+              type: "pending",
+              date: reservation.date + " " + reservation.time,
+              guests: reservation.guests,
+              contact: reservation.phone,
+              location: reservation.locationInput || "Unknown",
+              message: reservation.message || ""
+            });
+
             goToHome2(); // quay lại trang chủ
           });
         }
